@@ -35,3 +35,6 @@ steps:
       memory: 5GB
   when:
     event: push
+
+  node_selector:
+    CPUs: 8
