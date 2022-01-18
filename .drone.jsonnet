@@ -147,6 +147,7 @@ local buildStages() = (
         ),
         node_selector: {
           CPUs: 64
+          memory: 10GiB
         }
     }
 ]
