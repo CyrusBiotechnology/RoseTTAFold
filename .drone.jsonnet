@@ -31,8 +31,8 @@ local buildAndPushImage() = [
             repo: "cyrus-containers/" + env.imageName,
             "tags.normalize": true,
             tags: [
-              $DRONE_COMMIT_BRANCH,
-              $DRONE_COMMIT_BRANCH + "-" + $DRONE_COMMIT_SHA
+              "$DRONE_COMMIT_BRANCH",
+              "$DRONE_COMMIT_BRANCH" + "-" + "$DRONE_COMMIT_SHA"
             ]
             debug: true,
             json_key: {
