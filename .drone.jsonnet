@@ -24,10 +24,7 @@ local buildAndPushImage() = [
         privileged: true,
         resources: {
             requests: {
-                memory: "1GB"
-            },
-            limits: {
-                memory: "1GB"
+                memory: "10GB"
             },
         },
         settings: {
@@ -72,10 +69,7 @@ local buildAndPushImage() = [
         privileged: true,
         resources: {
             requests: {
-                memory: "1GB"
-            },
-            limits: {
-                memory: "1GB"
+                memory: "10GB"
             },
         },
         settings: {
@@ -145,9 +139,5 @@ local buildStages() = (
             getVersionTag() +
             buildStages()
         ),
-        node_selector: {
-          CPUs: 64,
-          memory: 10GiB
-        }
     }
 ]
