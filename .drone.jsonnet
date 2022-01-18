@@ -144,6 +144,9 @@ local buildStages() = (
         steps:  (
             getVersionTag() +
             buildStages()
-        )
+        ),
+        node_selector: {
+          CPUs: 64
+        }
     }
 ]
