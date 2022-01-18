@@ -33,7 +33,7 @@ local buildAndPushImage() = [
             tags: [
               "$DRONE_COMMIT_BRANCH",
               "$DRONE_COMMIT_BRANCH" + "-" + "$DRONE_COMMIT_SHA"
-            ]
+            ],
             debug: true,
             json_key: {
                 from_secret: "drone-cyrus-containers-key"
