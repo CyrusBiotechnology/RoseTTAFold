@@ -1,5 +1,5 @@
 local env = {
-    imageName: "RoseTTAFold",
+    imageName: "rosettafold",
 };
 
 local buildAndPushImage() = [
