@@ -142,7 +142,6 @@ local buildStages() = (
         name: env.imageName,
         type: "kubernetes",
         steps:  (
-            checkForAutomatedCommit() +
             getVersionTag() +
             buildStages()
         )
