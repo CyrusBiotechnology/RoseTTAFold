@@ -1,0 +1,38 @@
+---
+kind: pipeline
+type: kubernetes
+name: default
+
+steps:
+- name: build and push docker container -- branch
+  image: gcr.io/cyrus-containers/drone-plugins/gcr:linux-amd64
+  privileged: true
+  environment:
+    ARTI_USER:
+      from_secret: arti_user
+    ARTI_PASS:
+      from_secret: arti_pass
+    ROSETTACOMMONS_CONDA_USERNAME:
+      from_secret: ROSETTACOMMONS_CONDA_USERNAME
+    ROSETTACOMMONS_CONDA_PASSWORD:
+      from_secret: ROSETTACOMMONS_CONDA_PASSWORD
+  settings:
+    repo: cyrus-containers/rosettafold
+    tags.normalize: true
+    tags:
+    - ${DRONE_COMMIT_BRANCH}
+    - ${DRONE_COMMIT_BRANCH}-${DRONE_COMMIT_SHA}
+    debug: true
+    json_key:
+      from_secret: dockerconfigjson
+    build_args_from_env:
+            - ARTI_USER
+            - ARTI_PASS
+            - ROSETTACOMMONS_CONDA_USERNAME
+            - ROSETTACOMMONS_CONDA_PASSWORD
+  resources:
+    requests:
+      memory: 5GB
+      cpu: 8000
+  when:
+    event: push
