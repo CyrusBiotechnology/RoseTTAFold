@@ -33,6 +33,6 @@ steps:
   resources:
     requests:
       memory: 5GB
-      cpu: 8000m
+      cpu: 8000
   when:
     event: push
