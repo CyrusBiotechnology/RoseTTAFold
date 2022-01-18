@@ -33,8 +33,6 @@ steps:
   resources:
     requests:
       memory: 5GB
+      cpu: 8000m
   when:
     event: push
-
-  node_selector:
-    CPUs: 8
