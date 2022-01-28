@@ -2,15 +2,16 @@
 
 # inputs
 in_fasta="$1"
-out_dir="$2"
+in_db="$2"
+out_dir="$3"
 
 # resources
-CPU="$3"
-MEM="$4"
+CPU="$4"
+MEM="$5"
 
 # sequence databases
-DB="$PIPEDIR/UniRef30_2020_06/UniRef30_2020_06"
-MYDB="$PIPEDIR/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt"
+DB="$in_db/UniRef30_2020_06/UniRef30_2020_06"
+MYDB="$in_db/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt"
 
 # setup hhblits command
 HHBLITS="hhblits -o /dev/null -mact 0.35 -maxfilt 100000000 -neffmax 20 -cov 25 -cpu $CPU -nodiff -realign_max 100000000 -maxseq 1000000 -maxmem $MEM -n 4 -d $DB -d $MYDB"
