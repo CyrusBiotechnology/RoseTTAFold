@@ -6,7 +6,7 @@ in_db="$2"
 out_dir="$3"
 
 echo "RUN_PYROSETTA_VER INPUTS: "
-echo "IN_DB: " + $in_db
+echo "IN_DB: " "$in_db"
 
 # resources
 CPU="$4"
