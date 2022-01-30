@@ -23,6 +23,9 @@ IN="$1"                # input.fasta
 IN_DB="$2"             # DB path
 WDIR=`realpath -s $3`  # working folder
 
+echo "RUN_PYROSETTA_VER INPUTS: "
+echo "IN_DB: " + $in_db
+
 
 LEN=`tail -n1 $IN | wc -m`
 
@@ -119,6 +122,6 @@ then
     echo "Picking final models"
     python -u -W ignore $PIPEDIR/DAN-msa/pick_final_models.div.py \
         $WDIR/pdb-3track $WDIR/model $CPU > $WDIR/log/pick.stdout 2> $WDIR/log/pick.stderr
-    echo "Final models saved in: $2/model"
+    echo "Final models saved in: $3/model"
 fi
 echo "Done"
