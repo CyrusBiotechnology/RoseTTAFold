@@ -24,7 +24,7 @@ IN_DB="$2"             # DB path
 WDIR=`realpath -s $3`  # working folder
 
 echo "RUN_PYROSETTA_VER INPUTS: "
-echo "IN_DB: " "$in_db"
+echo "IN_DB: " "$IN_DB"
 
 
 LEN=`tail -n1 $IN | wc -m`
