@@ -20,7 +20,8 @@ MEM="64" # max memory (in GB)
 
 # Inputs:
 IN="$1"                # input.fasta
-WDIR=`realpath -s $2`  # working folder
+IN_DB="$2"             # DB path
+WDIR=`realpath -s $3`  # working folder
 
 
 LEN=`tail -n1 $IN | wc -m`
@@ -34,7 +35,7 @@ conda activate RoseTTAFold
 if [ ! -s $WDIR/t000_.msa0.a3m ]
 then
     echo "Running HHblits"
-    $PIPEDIR/input_prep/make_msa.sh $IN $WDIR $CPU $MEM > $WDIR/log/make_msa.stdout 2> $WDIR/log/make_msa.stderr
+    $PIPEDIR/input_prep/make_msa.sh $IN $IN_DB $WDIR $CPU $MEM > $WDIR/log/make_msa.stdout 2> $WDIR/log/make_msa.stderr
 fi
 
 
@@ -51,7 +52,7 @@ fi
 ############################################################
 # 3. search for templates
 ############################################################
-DB="$PIPEDIR/pdb100_2021Mar03/pdb100_2021Mar03"
+DB="$IN_DB/pdb100_2021Mar03/pdb100_2021Mar03"
 if [ ! -s $WDIR/t000_.hhr ]
 then
     echo "Running hhsearch"
@@ -68,7 +69,7 @@ if [ ! -s $WDIR/t000_.3track.npz ]
 then
     echo "Running end-to-end prediction"
     python $PIPEDIR/network/predict_e2e.py \
-        -m $PIPEDIR/weights \
+        -m $IN_DB/weights \
         -i $WDIR/t000_.msa0.a3m \
         -o $WDIR/t000_.e2e \
         --hhr $WDIR/t000_.hhr \
