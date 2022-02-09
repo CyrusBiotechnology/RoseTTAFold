@@ -10,11 +10,10 @@ RUN apt install -y cmake
 RUN apt-get install -y wget libgomp1 unzip git build-essential && rm -rf /var/lib/apt/lists/*
 RUN apt-get update
 
-WORKDIR /home/benjamin/
+WORKDIR /home
 RUN git clone --progress --verbose https://github.com/soedinglab/hh-suite.git
 RUN mkdir -p hh-suite/build && cd hh-suite/build
-WORKDIR /home/benjamin/hh-suite/build
-RUN echo "$PWD"
+WORKDIR /home/hh-suite/build
 RUN cmake -DCMAKE_INSTALL_PREFIX=. ..
 RUN make -j 4 && make install
 ENV PATH $(pwd)/bin:$(pwd)/scripts:$PATH
