@@ -12,7 +12,6 @@ dependencies:
   - _openmp_mutex=4.5=1_gnu
   - biopython=1.78=py38h497a2fe_2
   - blas=1.0=mkl
-  - hhsuite
   - blast-legacy=2.2.26=2
   - brotlipy=0.7.0=py38h497a2fe_1001
   - bzip2=1.0.8=h7b6447c_0

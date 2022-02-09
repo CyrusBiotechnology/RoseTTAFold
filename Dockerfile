@@ -1,10 +1,23 @@
-FROM nvidia/cuda:11.3.0-runtime-ubuntu20.04
+FROM nvidia/cuda:11.3.0-runtime-ubuntu18.04
 ARG ROSETTACOMMONS_CONDA_USERNAME
 ARG ROSETTACOMMONS_CONDA_PASSWORD
 
 RUN apt-get update
 
-RUN apt-get install -y wget libgomp1 unzip && rm -rf /var/lib/apt/lists/*
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt install -y cmake
+RUN apt-get install -y wget libgomp1 unzip git build-essential && rm -rf /var/lib/apt/lists/*
+RUN apt-get update
+
+WORKDIR /home/benjamin/
+RUN git clone --progress --verbose https://github.com/soedinglab/hh-suite.git
+RUN mkdir -p hh-suite/build && cd hh-suite/build
+WORKDIR /home/benjamin/hh-suite/build
+RUN echo "$PWD"
+RUN cmake -DCMAKE_INSTALL_PREFIX=. ..
+RUN make -j 4 && make install
+ENV PATH $(pwd)/bin:$(pwd)/scripts:$PATH
 
 RUN wget -q \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
