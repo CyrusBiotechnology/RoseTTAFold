@@ -3,6 +3,11 @@ kind: pipeline
 type: kubernetes
 name: default
 
+resources:
+  requests:
+    memory: 64GB
+    cpu: 8000
+
 steps:
 - name: build and push docker container -- branch
   image: gcr.io/cyrus-containers/drone-plugins/gcr:linux-amd64
@@ -30,9 +35,5 @@ steps:
             - ARTI_PASS
             - ROSETTACOMMONS_CONDA_USERNAME
             - ROSETTACOMMONS_CONDA_PASSWORD
-  resources:
-    requests:
-      memory: 64GB
-      cpu: 8000
   when:
     event: push
