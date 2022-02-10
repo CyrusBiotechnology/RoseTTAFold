@@ -32,7 +32,7 @@ steps:
             - ROSETTACOMMONS_CONDA_PASSWORD
   resources:
     requests:
-      memory: 5GB
+      memory: 64GB
       cpu: 8000
   when:
     event: push
