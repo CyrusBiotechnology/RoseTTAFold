@@ -1,4 +1,9 @@
-FROM nvidia/cuda:11.3.0-runtime-ubuntu18.04
+ARG CUDA=11.1
+FROM nvidia/cuda:${CUDA}-cudnn8-runtime-ubuntu18.04
+# FROM directive resets ARGS, so we specify again (the value is retained if
+# previously set).
+ARG CUDA
+
 ARG ROSETTACOMMONS_CONDA_USERNAME
 ARG ROSETTACOMMONS_CONDA_PASSWORD
 
