@@ -10,7 +10,6 @@ channels:
 dependencies:
   - biopython=1.78
   - biocore::blast-legacy=2.2.26
-  - hhsuite
   - psipred=4.01
   - _libgcc_mutex=0.1=main
   - _openmp_mutex=4.5=1_gnu

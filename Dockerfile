@@ -45,4 +45,4 @@ ENV PATH $(pwd)/bin:$(pwd)/scripts:$PATH
 
 ENV PATH /RoseTTaFold:$PATH
 
-WORKDIR /tmp
+WORKDIR /RoseTTaFold
