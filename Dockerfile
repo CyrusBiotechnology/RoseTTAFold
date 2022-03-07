@@ -38,6 +38,7 @@ RUN conda config --add channels https://${ROSETTACOMMONS_CONDA_USERNAME}:${ROSET
 RUN conda install -n folding pyrosetta=2020.45
 
 RUN chmod +x install_dependencies.sh
+RUN chmod +x run_pyrosetta_ver.sh
 RUN ./install_dependencies.sh
 
 WORKDIR /home
